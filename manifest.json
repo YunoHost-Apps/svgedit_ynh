@@ -7,6 +7,7 @@
         "fr": "SVG-edit est un outil de manipulation de SVG en ligne, rapide, et écrit en javascript qui fonctionne avec tout navigateur moderne."
     },
     "url": "https://github.com/SVG-Edit/svgedit",
+    "version": "2.8.1-1",
     "license": "MIT",
     "maintainer": {
         "name": "Luc Didry",

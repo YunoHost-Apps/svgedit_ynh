@@ -1,58 +1,54 @@
 #!/bin/bash
 
-# Exit on command errors and treat unset variables as an error
-set -eu
-
-# See comments in install script
-app=$YNH_APP_INSTANCE_NAME
-
 # Source YunoHost helpers
 source /usr/share/yunohost/helpers
+source _common.sh
+
+# See comments in install script
+export app=$YNH_APP_INSTANCE_NAME
 
 # Retrieve app settings
-domain=$(ynh_app_setting_get "$app" domain)
-path_url=$(ynh_app_setting_get "$app" path)
-is_public=$(ynh_app_setting_get "$app" is_public)
+ynh_get_and_export domain path_url is_public final_path
 
-# Remove trailing "/" for next commands
-path_url=${path_url%/}
+# Check version
+ynh_abort_if_up_to_date
 
-# Check needed packages
-if ! ynh_package_is_installed "wget" ; then
-    apt-get install -y wget
-fi
-if ! ynh_package_is_installed "unzip" ; then
-    apt-get install -y unzip
+# Backup the current version of the app
+ynh_backup_before_upgrade
+ynh_clean_setup () {
+	# restore it if the upgrade fails
+	ynh_restore_upgradebackup
+}
+
+# Exit if an error occurs during the execution of the script
+ynh_abort_if_errors
+
+# Normalize the url path syntax
+path_url=$(ynh_normalize_url_path $path_url)
+
+# Step migration
+version=${version:-2.8.1}
+if ynh_version_le "2.8.1" ; then
+    final_path=${final_path:-/var/www/$app}
+    ynh_app_setting_set "$app" final_path "$final_path"
+    
+    # Install dependency properly
+    ynh_install_app_dependencies $pkg_dependencies
 fi
 
 # Copy source files
-src_path=/var/www/$app
-sudo mkdir -p $src_path
-mkdir ../sources/
-cd ../sources/
-wget -q https://github.com/SVG-Edit/svgedit/releases/download/svg-edit-2.8.1/svg-edit-2.8.1.zip
-unzip svg-edit-2.8.1.zip
-cd -
-sudo rm -rf $src_path/*
-sudo cp -a ../sources/svg-edit-2.8.1/. $src_path
-rm -rf ../sources/svg-edit-2.8.1/ ../sources/svg-edit-2.8.1.zip
-touch $src_path/config.js $src_path/custom.css
+ynh_secure_remove $final_path
+ynh_setup_source "$final_path"
+
+# Custom instructions
+ynh_configure config.js "$final_path/config.js"
+ynh_configure custom.css "$final_path/custom.css"
 
 # Set permissions to app files
-# you may need to make some file and/or directory writeable by www-data (nginx user)
-sudo chown -R root: $src_path
-
-# Modify Nginx configuration file and copy it to Nginx conf directory
-nginx_conf=../conf/nginx.conf
-sed -i "s@YNH_WWW_PATH@$path_url@g" $nginx_conf
-sed -i "s@YNH_WWW_ALIAS@$src_path/@g" $nginx_conf
-sudo cp $nginx_conf /etc/nginx/conf.d/$domain.d/$app.conf
+ynh_set_default_perm "$final_path"
 
 # If app is public, add url to SSOWat conf as skipped_uris
-if [[ $is_public -eq 1 ]]; then
-  # See install script
-  ynh_app_setting_set "$app" unprotected_uris "/"
-fi
+ynh_sso_access "/"
 
-# Reload nginx service
-sudo service nginx reload
+# Set up nginx configuration
+ynh_add_nginx_config
