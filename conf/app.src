@@ -1,2 +1,5 @@
 SOURCE_URL=https://github.com/SVG-Edit/svgedit/releases/download/svg-edit-2.8.1/svg-edit-2.8.1.zip
-SOURCE_SUM=982687a16035944494c6be4f7c5e6972
+SOURCE_SUM=416799c4fcb3dcbe7fa5c4ac6409a2891afc4fa759b654bcb5e6df55e259bfe1
+SOURCE_IN_SUBDIR=true
+SOURCE_FORMAT=zip
+SOURCE_FILENAME=svg-edit-2-8-1.tar.gz
