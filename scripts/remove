@@ -5,15 +5,17 @@ app=$YNH_APP_INSTANCE_NAME
 
 # Source YunoHost helpers
 source /usr/share/yunohost/helpers
+source _common.sh
 
 # Retrieve app settings
 domain=$(ynh_app_setting_get "$app" domain)
+final_path=$(ynh_app_setting_get "$app" final_path)
+
+# Remove dependencies
+ynh_remove_app_dependencies
 
 # Remove sources
-sudo rm -rf /var/www/$app
+ynh_secure_remove $final_path
 
 # Remove nginx configuration file
-sudo rm -f /etc/nginx/conf.d/$domain.d/$app.conf
-
-# Reload nginx service
-sudo service nginx reload
+ynh_remove_nginx_config

@@ -1,35 +1,41 @@
 #!/bin/bash
 
-# Note: each files and directories you've saved using the ynh_backup helper
-# will be located in the current directory, regarding the last argument.
-
-# Exit on command errors and treat unset variables as an error
-set -eu
-
-# See comments in install script
-app=$YNH_APP_INSTANCE_NAME
-
 # Source YunoHost helpers
 source /usr/share/yunohost/helpers
+source ../settings/scripts/_common.sh
+
+# Exit if an error occurs during the execution of the script
+ynh_abort_if_errors
+
+export app=$YNH_APP_INSTANCE_NAME
 
 # Retrieve old app settings
-domain=$(ynh_app_setting_get "$app" domain)
-path_url=$(ynh_app_setting_get "$app" path_url)
+ynh_get_and_export domain path_url is_public final_path
 
-# Check domain/path availability
-sudo yunohost app checkurl "${domain}${path_url}" -a "$app" \
-    || ynh_die "Path not available: ${domain}${path_url}"
+# Normalize the url path syntax
+path_url=$(ynh_normalize_url_path $path_url)
+
+# Check web path availability
+ynh_webpath_available $domain $path_url
+# Check if the app can be installed with this args
+ynh_final_path_available
+
+# Install dependency
+ynh_install_app_dependencies $pkg_dependencies
 
 # Restore sources & data
-src_path="/var/www/${app}"
-sudo cp -a ./sources "$src_path"
+ynh_restore
 
 # Restore permissions to app files
-# you may need to make some file and/or directory writeable by www-data (nginx user)
-sudo chown -R root: "$src_path"
+ynh_set_default_perm "$final_path"
 
-# Restore NGINX configuration
-sudo cp -a ./nginx.conf "/etc/nginx/conf.d/${domain}.d/${app}.conf"
+# If app is public, add url to SSOWat conf as skipped_uris
+ynh_sso_access "/"
 
 # Restart webserver
-sudo service nginx reload
+systemctl reload nginx
+
+# Send message to the admin
+message="If you facing an issue or want to improve this app, please open a new issue in this project: https://github.com/YunoHost-Apps/svgedit_ynh"
+
+ynh_send_readme_to_admin "$message"
