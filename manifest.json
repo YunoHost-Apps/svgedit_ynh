@@ -10,9 +10,12 @@
     "version": "2.8.1-1",
     "license": "MIT",
     "maintainer": {
-        "name": "Luc Didry",
-        "email": "luc@framasoft.org",
-        "url": "https://framasoft.org"
+        "name": "ljf",
+        "email": "ljf+svgedit_ynh@reflexlibre.net",
+        "url": "https://reflexlibre.net"
+    },
+    "previous_maintainers": {
+        "name": "Luc Didry"
     },
     "requirements": {
         "yunohost": ">> 2.4.0"
