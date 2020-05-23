@@ -3,8 +3,8 @@
     "id": "svgedit",
     "packaging_format": 1,
     "description": {
-        "en": "SVG-edit is a fast, web-based, javascript-driven SVG drawing editor that works in any modern browser.",
-        "fr": "SVG-edit est un outil de manipulation de SVG en ligne, rapide, et écrit en javascript qui fonctionne avec tout navigateur moderne."
+        "en": "A fast, web-based, javascript-driven SVG drawing editor that works in any modern browser.",
+        "fr": "Un outil de manipulation de SVG en ligne, rapide, et écrit en javascript qui fonctionne avec tout navigateur moderne."
     },
     "url": "https://github.com/SVG-Edit/svgedit",
     "version": "2.8.1-1",
