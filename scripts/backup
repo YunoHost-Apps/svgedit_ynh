@@ -52,4 +52,3 @@ ynh_backup --src_path="/etc/nginx/conf.d/$domain.d/$app.conf"
 #=================================================
 
 ynh_print_info --message="Backup script completed for SVG-edit. (YunoHost will then actually copy those files to the archive)."
-

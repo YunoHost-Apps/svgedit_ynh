@@ -41,7 +41,7 @@ Non supporté.
 
 ## Limitations
 
-* Il n'y a pas de gestion de compte dans SVG-edit, mais le SSO peut protéger l'accès à l'application pour interdire l'utilisateur sans compte YunoHost.
+Il n'y a pas de gestion de compte dans SVG-edit, mais le SSO peut protéger l'accès à l'application pour interdire l'utilisateur sans compte YunoHost.
 
 ## Informations additionnelles
 
