@@ -1,21 +1,18 @@
-# SVG Edit app for YunoHost
+# SVG-edit for YunoHost
 
 [![Integration level](https://dash.yunohost.org/integration/svgedit.svg)](https://dash.yunohost.org/appci/app/svgedit) ![](https://ci-apps.yunohost.org/ci/badges/svgedit.status.svg) ![](https://ci-apps.yunohost.org/ci/badges/svgedit.maintain.svg)  
-[![Install SVG Edit with YunoHost](https://install-app.yunohost.org/install-with-yunohost.png)](https://install-app.yunohost.org/?app=svgedit)
+[![Install SVG-edit with YunoHost](https://install-app.yunohost.org/install-with-yunohost.png)](https://install-app.yunohost.org/?app=svgedit)
 
-> *This package allow you to install SVG Edit quickly and simply on a YunoHost server.  
+> *This package allow you to install SVG-edit quickly and simply on a YunoHost server.  
 If you don't have YunoHost, please see [here](https://yunohost.org/#/install) to know how to install and enjoy it.*
 
 ## Overview
 SVG-edit is a fast, web-based, javascript-driven SVG drawing editor that works in any modern browser.
 
-**Shipped version:** 2.8.1
-
-**Categories:** Productivity, Drawing
+**Shipped version:** 5.1.0
 
 ## Screenshots
-![alt text](https://svg-edit.github.io/svgedit/images/logo48x48.svg "svg-edit logo of a pencil") SVG-edit 
-
+![](https://raw.githubusercontent.com/SVG-Edit/svgedit/master/docs/screenshot.png)
 
 ## Configuration
 
@@ -31,12 +28,12 @@ Not supported.
 
 #### Supported architectures
 
-* x86-64b - [![Build Status](https://ci-apps.yunohost.org/jenkins/job/leed%20(Community)/badge/icon)](https://ci-apps.yunohost.org/jenkins/job/svgedit%20(Community)/)
-* ARMv8-A - [![Build Status](https://ci-apps.yunohost.org/jenkins/job/leed%20(Community)%20(%7EARM%7E)/badge/icon)](https://ci-apps.yunohost.org/jenkins/job/svgedit%20(Community)%20(%7EARM%7E)/)
+* x86-64 - [![Build Status](https://ci-apps.yunohost.org/ci/logs/svgedit%20%28Apps%29.svg)](https://ci-apps.yunohost.org/ci/apps/svgedit/)
+* ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/svgedit%20%28Apps%29.svg)](https://ci-apps-arm.yunohost.org/ci/apps/svgedit/)
 
 ## Limitations
 
-* There is no account management in SVG Edit, but the SSO can protect the access to the app to disallow user without yunohost account.
+* There is no account management in SVG-edit, but the SSO can protect the access to the app to disallow user without YunoHost account.
 
 ## Additionnal informations
 
@@ -48,10 +45,7 @@ Not supported.
 
 ---
 
-Developers infos
-----------------
-
-**Package by:** Luc Didry
+## Developers infos
 
 Please do your pull request to the [testing branch](https://github.com/YunoHost-Apps/svgedit_ynh/tree/testing).
 
