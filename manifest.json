@@ -3,11 +3,11 @@
     "id": "svgedit",
     "packaging_format": 1,
     "description": {
-        "en": "A fast, web-based, javascript-driven SVG drawing editor that works in any modern browser.",
-        "fr": "Un outil de manipulation de SVG en ligne, rapide, et écrit en javascript qui fonctionne avec tout navigateur moderne."
+        "en": "A fast web-based SVG drawing editor that works in any modern browser.",
+        "fr": "Outil rapide de manipulation de SVG en ligne qui fonctionne avec tout navigateur moderne."
     },
     "url": "https://github.com/SVG-Edit/svgedit",
-    "version": "2.8.1-1",
+    "version": "2.8.1~ynh2",
     "license": "MIT",
     "maintainer": {
         "name": "ljf",
@@ -18,7 +18,7 @@
         "name": "Luc Didry"
     },
     "requirements": {
-        "yunohost": ">> 2.4.0"
+        "yunohost": ">> 3.8.1"
     },
     "multi_instance": true,
     "services": [
