@@ -90,8 +90,8 @@ ynh_system_user_create --username=$app
 # CUSTOM INSTRUCTION
 #=================================================
 
-ynh_configure svgedit-config-iife.js "$final_path/svgedit-config-iife.js"
-ynh_configure svgedit-custom.css "$final_path/svgedit-custom.css"
+ynh_configure config.js "$final_path/config.js"
+ynh_configure custom.css "$final_path/custom.css"
 
 #=================================================
 # SECURE FILES AND DIRECTORIES
