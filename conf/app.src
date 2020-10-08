@@ -3,10 +3,3 @@ SOURCE_SUM=416799c4fcb3dcbe7fa5c4ac6409a2891afc4fa759b654bcb5e6df55e259bfe1
 SOURCE_IN_SUBDIR=true
 SOURCE_FORMAT=zip
 SOURCE_FILENAME=svg-edit-2-8-1.tar.gz
-
-
-#SOURCE_URL=https://github.com/SVG-Edit/svgedit/archive/v5.1.0.zip
-#SOURCE_SUM=a716478634c3fdd7e9bd31edac2066ee4117c9537601827dae444f4a403646b0
-#SOURCE_IN_SUBDIR=true
-#SOURCE_FORMAT=zip
-#SOURCE_FILENAME=svgedit-5.1.0.zip
