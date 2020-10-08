@@ -3,13 +3,19 @@
 #=================================================
 # COMMON VARIABLES
 #=================================================
+
+# dependencies used by the app
+pkg_dependencies="wget"
+
 # App package root directory should be the parent folder
 PKG_DIR=$(cd ../; pwd)
 
-pkg_dependencies="wget"
+#=================================================
+# PERSONAL HELPERS
+#=================================================
 
 #=================================================
-# COMMON HELPERS
+# EXPERIMENTAL HELPERS
 #=================================================
 ynh_set_default_perm () {
     local DIRECTORY=$1
@@ -19,7 +25,7 @@ ynh_set_default_perm () {
     chown -R $user:www-data $DIRECTORY
     chmod -R 440 $DIRECTORY
     find $DIRECTORY -type d -print0 | xargs -0 chmod 550 \
-	    || echo "No file to modify"
+        || echo "No file to modify"
 
 }
 ynh_export () {
@@ -113,80 +119,18 @@ ynh_read_json () {
     sudo python3 -c "import sys, json;print(json.load(open('$1'))['$2'])"
 }
 
-ynh_read_manifest () {
-    if [ -f '../manifest.json' ] ; then
-        ynh_read_json '../manifest.json' "$1"
-    else
-        ynh_read_json '../settings/manifest.json' "$1"
-    fi
-}
-
 
 ynh_configure () {
     local TEMPLATE=$1
     local DEST=$2
     type j2 2>/dev/null || sudo pip install j2cli
     j2 "${PKG_DIR}/conf/$TEMPLATE.j2" > "${PKG_DIR}/conf/$TEMPLATE"
-	ynh_backup_if_checksum_is_different "$DEST"
+    ynh_backup_if_checksum_is_different "$DEST"
     sudo cp "${PKG_DIR}/conf/$TEMPLATE" "$DEST"
     ynh_store_file_checksum "$DEST"
-	sudo chown root: "$DEST"
+    sudo chown root: "$DEST"
 }
 
-ynh_add_nginx_config () {
-    finalnginxconf="/etc/nginx/conf.d/$domain.d/$app.conf"
-    ynh_configure nginx.conf "$finalnginxconf"
-    service nginx reload
-}
-
-# Send an email to inform the administrator
-#
-# usage: ynh_send_readme_to_admin app_message [recipients]
-# | arg: app_message - The message to send to the administrator.
-# | arg: recipients - The recipients of this email. Use spaces to separate multiples recipients. - default: root
-#	example: "root admin@domain"
-#	If you give the name of a YunoHost user, ynh_send_readme_to_admin will find its email adress for you
-#	example: "root admin@domain user1 user2"
-ynh_send_readme_to_admin() {
-	local app_message="${1:-...No specific information...}"
-	local recipients="${2:-root}"
-
-	# Retrieve the email of users
-	find_mails () {
-		local list_mails="$1"
-		local mail
-		local recipients=" "
-		# Read each mail in argument
-		for mail in $list_mails
-		do
-			# Keep root or a real email address as it is
-			if [ "$mail" = "root" ] || echo "$mail" | grep --quiet "@"
-			then
-				recipients="$recipients $mail"
-			else
-				# But replace an user name without a domain after by its email
-				if mail=$(ynh_user_get_info "$mail" "mail" 2> /dev/null)
-				then
-					recipients="$recipients $mail"
-				fi
-			fi
-		done
-		echo "$recipients"
-	}
-	recipients=$(find_mails "$recipients")
-
-	local mail_subject="☁️🆈🅽🅷☁️: \`$app\` was just installed!"
-
-	local mail_message="This is an automated message from your beloved YunoHost server.
-Specific information for the application $app.
-$app_message
----
-Automatic diagnosis data from YunoHost
-$(yunohost tools diagnosis | grep -B 100 "services:" | sed '/services:/d')"
-
-	# Send the email to the recipients
-	echo "$mail_message" | mail -a "Content-Type: text/plain; charset=UTF-8" -s "$mail_subject" "$recipients"
-}
 
 # Exit without error if the package is up to date
 #
@@ -199,42 +143,27 @@ $(yunohost tools diagnosis | grep -B 100 "services:" | sed '/services:/d')"
 #
 # usage: ynh_abort_if_up_to_date
 ynh_abort_if_up_to_date () {
-	local force_upgrade=${YNH_FORCE_UPGRADE:-0}
-	local package_check=${PACKAGE_CHECK_EXEC:-0}
+    local force_upgrade=${YNH_FORCE_UPGRADE:-0}
+    local package_check=${PACKAGE_CHECK_EXEC:-0}
 
-	local version=$(ynh_read_json "/etc/yunohost/apps/$YNH_APP_INSTANCE_NAME/manifest.json" "version" || echo 1.0)
-	local last_version=$(ynh_read_manifest "version" || echo 1.0)
-	if [ "$version" = "$last_version" ]
-	then
-		if [ "$force_upgrade" != "0" ]
-		then
-			echo "Upgrade forced by YNH_FORCE_UPGRADE." >&2
-			unset YNH_FORCE_UPGRADE
-		elif [ "$package_check" != "0" ]
-		then
-			echo "Upgrade forced for package check." >&2
-		else
-			ynh_die "Up-to-date, nothing to do" 0
-		fi
-	fi
+    local version=$(ynh_read_json "/etc/yunohost/apps/$YNH_APP_INSTANCE_NAME/manifest.json" "version" || echo 1.0)
+    local last_version=$(ynh_read_manifest "version" || echo 1.0)
+    if [ "$version" = "$last_version" ]
+    then
+        if [ "$force_upgrade" != "0" ]
+        then
+            echo "Upgrade forced by YNH_FORCE_UPGRADE." >&2
+            unset YNH_FORCE_UPGRADE
+        elif [ "$package_check" != "0" ]
+        then
+            echo "Upgrade forced for package check." >&2
+        else
+            ynh_die "Up-to-date, nothing to do" 0
+        fi
+    fi
 }
 
-# Remove any logs for all the following commands.
-#
-# usage: ynh_print_OFF
-# WARNING: You should be careful with this helper, and never forgot to use ynh_print_ON as soon as possible to restore the logging.
-ynh_print_OFF () {
-	set +x
-}
 
-# Restore the logging after ynh_print_OFF
-#
-# usage: ynh_print_ON
-ynh_print_ON () {
-	set -x
-	# Print an echo only for the log, to be able to know that ynh_print_ON has been called.
-	echo ynh_print_ON > /dev/null
-}
 ynh_version_gt() { test "$(printf '%s\n' "$@" | sort -V | head -n 1)" != "$1"; }
 
 # In upgrade script allow to test if the app is less than or equal a specific version
@@ -246,25 +175,25 @@ ynh_version_le() {
 }
 
 ynh_debian_release () {
-	lsb_release --codename --short
+    lsb_release --codename --short
 }
 
 is_stretch () {
-	if [ "$(ynh_debian_release)" == "stretch" ]
-	then
-		return 0
-	else
-		return 1
-	fi
+    if [ "$(ynh_debian_release)" == "stretch" ]
+    then
+        return 0
+    else
+        return 1
+    fi
 }
 
 is_jessie () {
-	if [ "$(ynh_debian_release)" == "jessie" ]
-	then
-		return 0
-	else
-		return 1
-	fi
+    if [ "$(ynh_debian_release)" == "jessie" ]
+    then
+        return 0
+    else
+        return 1
+    fi
 }
 
 # Reload (or other actions) a service and print a log in case of failure.
@@ -279,3 +208,7 @@ ynh_system_reload () {
         # Reload, restart or start and print the log if the service fail to start or reload
         systemctl $action $service_name || ( journalctl --lines=20 -u $service_name >&2 && false)
 }
+
+#=================================================
+# FUTURE OFFICIAL HELPERS
+#=================================================
