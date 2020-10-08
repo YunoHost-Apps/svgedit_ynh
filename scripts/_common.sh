@@ -7,6 +7,9 @@
 # dependencies used by the app
 pkg_dependencies="wget"
 
+# App package root directory should be the parent folder
+PKG_DIR=$(cd ../; pwd)
+
 #=================================================
 # PERSONAL HELPERS
 #=================================================
