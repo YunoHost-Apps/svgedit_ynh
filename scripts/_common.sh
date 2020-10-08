@@ -15,6 +15,17 @@ pkg_dependencies="wget"
 # EXPERIMENTAL HELPERS
 #=================================================
 
+ynh_configure () {
+    local TEMPLATE=$1
+    local DEST=$2
+    type j2 2>/dev/null || sudo pip install j2cli
+    j2 "${PKG_DIR}/conf/$TEMPLATE.j2" > "${PKG_DIR}/conf/$TEMPLATE"
+    ynh_backup_if_checksum_is_different "$DEST"
+    sudo cp "${PKG_DIR}/conf/$TEMPLATE" "$DEST"
+    ynh_store_file_checksum "$DEST"
+    sudo chown root: "$DEST"
+}
+
 #=================================================
 # FUTURE OFFICIAL HELPERS
 #=================================================
