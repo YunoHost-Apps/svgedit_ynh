@@ -119,14 +119,6 @@ ynh_read_json () {
     sudo python3 -c "import sys, json;print(json.load(open('$1'))['$2'])"
 }
 
-ynh_read_manifest () {
-    if [ -f '../manifest.json' ] ; then
-        ynh_read_json '../manifest.json' "$1"
-    else
-        ynh_read_json '../settings/manifest.json' "$1"
-    fi
-}
-
 
 ynh_configure () {
     local TEMPLATE=$1
@@ -139,60 +131,6 @@ ynh_configure () {
     sudo chown root: "$DEST"
 }
 
-ynh_add_nginx_config () {
-    finalnginxconf="/etc/nginx/conf.d/$domain.d/$app.conf"
-    ynh_configure nginx.conf "$finalnginxconf"
-    service nginx reload
-}
-
-# Send an email to inform the administrator
-#
-# usage: ynh_send_readme_to_admin app_message [recipients]
-# | arg: app_message - The message to send to the administrator.
-# | arg: recipients - The recipients of this email. Use spaces to separate multiples recipients. - default: root
-#   example: "root admin@domain"
-#   If you give the name of a YunoHost user, ynh_send_readme_to_admin will find its email adress for you
-#   example: "root admin@domain user1 user2"
-ynh_send_readme_to_admin() {
-    local app_message="${1:-...No specific information...}"
-    local recipients="${2:-root}"
-
-    # Retrieve the email of users
-    find_mails () {
-        local list_mails="$1"
-        local mail
-        local recipients=" "
-        # Read each mail in argument
-        for mail in $list_mails
-        do
-            # Keep root or a real email address as it is
-            if [ "$mail" = "root" ] || echo "$mail" | grep --quiet "@"
-            then
-                recipients="$recipients $mail"
-            else
-                # But replace an user name without a domain after by its email
-                if mail=$(ynh_user_get_info "$mail" "mail" 2> /dev/null)
-                then
-                    recipients="$recipients $mail"
-                fi
-            fi
-        done
-        echo "$recipients"
-    }
-    recipients=$(find_mails "$recipients")
-
-    local mail_subject="☁️🆈🅽🅷☁️: \`$app\` was just installed!"
-
-    local mail_message="This is an automated message from your beloved YunoHost server.
-Specific information for the application $app.
-$app_message
----
-Automatic diagnosis data from YunoHost
-$(yunohost tools diagnosis | grep -B 100 "services:" | sed '/services:/d')"
-
-    # Send the email to the recipients
-    echo "$mail_message" | mail -a "Content-Type: text/plain; charset=UTF-8" -s "$mail_subject" "$recipients"
-}
 
 # Exit without error if the package is up to date
 #
@@ -225,22 +163,7 @@ ynh_abort_if_up_to_date () {
     fi
 }
 
-# Remove any logs for all the following commands.
-#
-# usage: ynh_print_OFF
-# WARNING: You should be careful with this helper, and never forgot to use ynh_print_ON as soon as possible to restore the logging.
-ynh_print_OFF () {
-    set +x
-}
 
-# Restore the logging after ynh_print_OFF
-#
-# usage: ynh_print_ON
-ynh_print_ON () {
-    set -x
-    # Print an echo only for the log, to be able to know that ynh_print_ON has been called.
-    echo ynh_print_ON > /dev/null
-}
 ynh_version_gt() { test "$(printf '%s\n' "$@" | sort -V | head -n 1)" != "$1"; }
 
 # In upgrade script allow to test if the app is less than or equal a specific version
