@@ -3,6 +3,8 @@
 [![Integration level](https://dash.yunohost.org/integration/svgedit.svg)](https://dash.yunohost.org/appci/app/svgedit) ![](https://ci-apps.yunohost.org/ci/badges/svgedit.status.svg) ![](https://ci-apps.yunohost.org/ci/badges/svgedit.maintain.svg)  
 [![Install SVG-edit with YunoHost](https://install-app.yunohost.org/install-with-yunohost.png)](https://install-app.yunohost.org/?app=svgedit)
 
+*[Lire ce readme en français.](./README_fr.md)*
+
 > *This package allow you to install SVG-edit quickly and simply on a YunoHost server.  
 If you don't have YunoHost, please see [here](https://yunohost.org/#/install) to know how to install and enjoy it.*
 
@@ -12,7 +14,12 @@ SVG-edit is a fast, web-based, javascript-driven SVG drawing editor that works i
 **Shipped version:** 5.1.0
 
 ## Screenshots
+
 ![](https://raw.githubusercontent.com/SVG-Edit/svgedit/master/docs/screenshot.png)
+
+## Demo
+
+* [Official demo](https://svg-edit.github.io/svgedit/dist/editor/index.html)
 
 ## Configuration
 
