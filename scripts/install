@@ -52,7 +52,7 @@ ynh_app_setting_set --app=$app --key=is_public --value=$is_public
 
 # INSTALL DEPENDENCIES
 #=================================================
-ynh_script_progression --message="Installing dependencies..." --time --weight=3
+ynh_script_progression --message="Installing dependencies..." --weight=3
 
 ynh_install_app_dependencies $pkg_dependencies
 
@@ -94,17 +94,17 @@ ynh_configure custom.css "$final_path/custom.css"
 
 chown -R $app: $final_path
 
+#=================================================
+# SETUP SSOWAT
+#=================================================
+ynh_script_progression --message="Configuring SSOwat..." --time --weight=1
 
-# If app is public, add url to SSOWat conf as skipped_uris
-ynh_sso_access "/"
-
-# Send a readme to the admin
-ynh_print_OFF
-message="You can now draw this address: https://${domain}${path_url}/
-If you facing an issue or want to improve this app, please open a new issue in this project: https://github.com/YunoHost-Apps/svgedit_ynh"
-
-ynh_send_readme_to_admin "$message"
-ynh_print_ON
+# Make app public if necessary
+if [ $is_public -eq 1 ]
+then
+	# unprotected_uris allows SSO credentials to be passed anyway.
+	ynh_app_setting_set --app=$app --key=unprotected_uris --value="/"
+fi
 
 #=================================================
 # RELOAD NGINX
