@@ -7,7 +7,7 @@
         "fr": "Édition de SVG en ligne fonctionnent avec tout navigateur moderne."
     },
     "url": "https://github.com/SVG-Edit/svgedit",
-    "version": "2.8.1~ynh2",
+    "version": "2.8.1~ynh3",
     "license": "MIT",
     "maintainer": {
         "name": "ljf",
@@ -51,6 +51,10 @@
                 "ask": {
                     "en": "Is it a public application?",
                     "fr": "Est-ce une application publique ?"
+                },
+                "help": {
+                    "en": "If enabled, SVG-edit will be accessible by people who do not have an account. This can be changed later via the webadmin.",
+                    "fr": "Si cette case est cochée, SVG-edit sera accessible aux personnes n’ayant pas de compte. Vous pourrez changer ceci plus tard via la webadmin."
                 },
                 "default": true
             }
