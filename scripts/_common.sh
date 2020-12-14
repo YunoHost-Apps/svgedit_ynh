@@ -116,19 +116,19 @@ to_logs() {
 }
 
 ynh_read_json () {
-    sudo python3 -c "import sys, json;print(json.load(open('$1'))['$2'])"
+    python3 -c "import sys, json;print(json.load(open('$1'))['$2'])"
 }
 
 
 ynh_configure () {
     local TEMPLATE=$1
     local DEST=$2
-    type j2 2>/dev/null || sudo pip install j2cli
+    type j2 2>/dev/null || pip install j2cli
     j2 "${PKG_DIR}/conf/$TEMPLATE.j2" > "${PKG_DIR}/conf/$TEMPLATE"
     ynh_backup_if_checksum_is_different "$DEST"
-    sudo cp "${PKG_DIR}/conf/$TEMPLATE" "$DEST"
+    cp "${PKG_DIR}/conf/$TEMPLATE" "$DEST"
     ynh_store_file_checksum "$DEST"
-    sudo chown root: "$DEST"
+    chown root: "$DEST"
 }
 
 
@@ -139,7 +139,7 @@ ynh_configure () {
 #
 # To force an upgrade, even if the package is up to date,
 # you have to set the variable YNH_FORCE_UPGRADE before.
-# example: sudo YNH_FORCE_UPGRADE=1 yunohost app upgrade MyApp
+# example: YNH_FORCE_UPGRADE=1 yunohost app upgrade MyApp
 #
 # usage: ynh_abort_if_up_to_date
 ynh_abort_if_up_to_date () {
