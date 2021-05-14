@@ -36,8 +36,8 @@ Not supported.
 
 #### Supported architectures
 
-* x86-64 - [![Build Status](https://ci-apps.yunohost.org/ci/logs/svgedit%20%28Apps%29.svg)](https://ci-apps.yunohost.org/ci/apps/svgedit/)
-* ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/svgedit%20%28Apps%29.svg)](https://ci-apps-arm.yunohost.org/ci/apps/svgedit/)
+* x86-64 - [![Build Status](https://ci-apps.yunohost.org/ci/logs/svgedit.svg)](https://ci-apps.yunohost.org/ci/apps/svgedit/)
+* ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/svgedit.svg)](https://ci-apps-arm.yunohost.org/ci/apps/svgedit/)
 
 ## Limitations
 

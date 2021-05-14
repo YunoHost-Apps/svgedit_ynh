@@ -47,13 +47,6 @@ ynh_script_progression --message="Storing installation settings..." --weight=1
 
 ynh_app_setting_set --app=$app --key=domain --value=$domain
 ynh_app_setting_set --app=$app --key=path --value=$path_url
-ynh_app_setting_set --app=$app --key=is_public --value=$is_public
-
-# INSTALL DEPENDENCIES
-#=================================================
-ynh_script_progression --message="Installing dependencies..." --weight=3
-
-ynh_install_app_dependencies $pkg_dependencies
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
@@ -84,8 +77,7 @@ ynh_add_nginx_config
 # CUSTOM INSTRUCTION
 #=================================================
 
-ynh_configure config.js "$final_path/config.js"
-ynh_configure custom.css "$final_path/custom.css"
+ynh_add_config --template="config-sample.js" --destination="$final_path/config.js"
 
 #=================================================
 # SECURE FILES AND DIRECTORIES
@@ -101,7 +93,7 @@ ynh_script_progression --message="Configuring SSOwat..." --weight=1
 # Make app public if necessary or protect it
 if [ $is_public -eq 1 ]
 then
-	ynh_permission_update --permission "main" --add "visitors"
+	ynh_permission_update --permission="main" --add="visitors"
 fi
 
 #=================================================
