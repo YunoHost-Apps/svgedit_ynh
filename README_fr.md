@@ -1,7 +1,7 @@
 # SVG-edit pour YunoHost
 
 [![Niveau d'intégration](https://dash.yunohost.org/integration/svgedit.svg)](https://dash.yunohost.org/appci/app/svgedit) ![](https://ci-apps.yunohost.org/ci/badges/svgedit.status.svg) ![](https://ci-apps.yunohost.org/ci/badges/svgedit.maintain.svg)  
-[![Installer SVG-edit avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.png)](https://install-app.yunohost.org/?app=svgedit)
+[![Installer SVG-edit avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=svgedit)
 
 *[Read this readme in english.](./README.md)* 
 
@@ -36,8 +36,8 @@ Non supporté.
 
 #### Architectures supportées
 
-* x86-64 - [![Build Status](https://ci-apps.yunohost.org/ci/logs/svgedit%20%28Apps%29.svg)](https://ci-apps.yunohost.org/ci/apps/svgedit/)
-* ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/svgedit%20%28Apps%29.svg)](https://ci-apps-arm.yunohost.org/ci/apps/svgedit/)
+* x86-64 - [![Build Status](https://ci-apps.yunohost.org/ci/logs/svgedit.svg)](https://ci-apps.yunohost.org/ci/apps/svgedit/)
+* ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/svgedit.svg)](https://ci-apps-arm.yunohost.org/ci/apps/svgedit/)
 
 ## Limitations
 
