@@ -18,7 +18,7 @@
         "name": "Luc Didry"
     },
     "requirements": {
-        "yunohost": ">> 3.8.1"
+        "yunohost": ">> 4.2.4"
     },
     "multi_instance": true,
     "services": [
@@ -29,29 +29,17 @@
             {
                 "name": "domain",
                 "type": "domain",
-                "ask": {
-                    "en": "Choose a domain name for SVG-edit",
-                    "fr": "Choisissez un nom de domaine pour SVG-edit"
-                },
                 "example": "domain.org"
             },
             {
                 "name": "path",
                 "type": "path",
-                "ask": {
-                    "en": "Choose a path for SVG-edit",
-                    "fr": "Choisissez un chemin pour SVG-edit"
-                },
                 "example": "/svgedit",
                 "default": "/svgedit"
             },
             {
                 "name": "is_public",
                 "type": "boolean",
-                "ask": {
-                    "en": "Is it a public application?",
-                    "fr": "Est-ce une application publique ?"
-                },
                 "help": {
                     "en": "If enabled, SVG-edit will be accessible by people who do not have an account. This can be changed later via the webadmin.",
                     "fr": "Si cette case est cochée, SVG-edit sera accessible aux personnes n’ayant pas de compte. Vous pourrez changer ceci plus tard via la webadmin."
