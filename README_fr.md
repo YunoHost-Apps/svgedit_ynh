@@ -18,7 +18,8 @@ Si vous n'avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour
 SVG-edit est un éditeur de dessin SVG rapide, basé sur le Web et piloté par JavaScript, qui fonctionne dans n'importe quel navigateur moderne.
 
 
-**Version incluse :** 2.8.1~ynh4
+**Version incluse :** 2.8.1~ynh4
+
 
 ## Captures d'écran
 

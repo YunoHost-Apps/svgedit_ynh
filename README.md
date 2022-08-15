@@ -20,6 +20,7 @@ SVG-edit is a fast, web-based, javascript-driven SVG drawing editor that works i
 
 **Shipped version:** 2.8.1~ynh4
 
+
 ## Screenshots
 
 ![Screenshot of SVG-edit](./doc/screenshots/screenshot.png)
