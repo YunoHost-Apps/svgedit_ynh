@@ -20,7 +20,6 @@ SVG-edit is a fast, web-based, javascript-driven SVG drawing editor that works i
 
 **Shipped version:** 2.8.1~ynh4
 
-
 ## Screenshots
 
 ![Screenshot of SVG-edit](./doc/screenshots/screenshot.png)
@@ -33,7 +32,6 @@ There is no account management in SVG-edit, but the SSO can protect the access t
 
 ## Documentation and resources
 
-* Official app website: <https://example.com>
 * Upstream app code repository: <https://github.com/SVG-Edit/svgedit>
 * YunoHost documentation for this app: <https://yunohost.org/app_svgedit>
 * Report a bug: <https://github.com/YunoHost-Apps/svgedit_ynh/issues>
