@@ -9,7 +9,6 @@
     "url": "https://github.com/SVG-Edit/svgedit",
     "upstream": {
         "license": "MIT",
-        "website": "https://example.com",
         "code": "https://github.com/SVG-Edit/svgedit"
     },
     "version": "2.8.1~ynh4",
