@@ -5,7 +5,8 @@ It shall NOT be edited by hand.
 
 # SVG-edit for YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/svgedit.svg)](https://dash.yunohost.org/appci/app/svgedit) ![Working status](https://ci-apps.yunohost.org/ci/badges/svgedit.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/svgedit.maintain.svg)  
+[![Integration level](https://dash.yunohost.org/integration/svgedit.svg)](https://dash.yunohost.org/appci/app/svgedit) ![Working status](https://ci-apps.yunohost.org/ci/badges/svgedit.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/svgedit.maintain.svg)
+
 [![Install SVG-edit with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=svgedit)
 
 *[Lire ce readme en français.](./README_fr.md)*
@@ -33,7 +34,7 @@ There is no account management in SVG-edit, but the SSO can protect the access t
 ## Documentation and resources
 
 * Upstream app code repository: <https://github.com/SVG-Edit/svgedit>
-* YunoHost documentation for this app: <https://yunohost.org/app_svgedit>
+* YunoHost Store: <https://apps.yunohost.org/app/svgedit>
 * Report a bug: <https://github.com/YunoHost-Apps/svgedit_ynh/issues>
 
 ## Developer info
