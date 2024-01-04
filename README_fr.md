@@ -29,6 +29,7 @@ SVG-edit est un éditeur de dessin SVG rapide, basé sur le Web et piloté par J
 
 ## Documentations et ressources
 
+* Site officiel de l’app : <https://github.com/SVG-Edit/svgedit>
 * Dépôt de code officiel de l’app : <https://github.com/SVG-Edit/svgedit>
 * YunoHost Store: <https://apps.yunohost.org/app/svgedit>
 * Signaler un bug : <https://github.com/YunoHost-Apps/svgedit_ynh/issues>

@@ -29,6 +29,7 @@ SVG-edit is a fast, web-based, javascript-driven SVG drawing editor that works i
 
 ## Documentation and resources
 
+* Official app website: <https://github.com/SVG-Edit/svgedit>
 * Upstream app code repository: <https://github.com/SVG-Edit/svgedit>
 * YunoHost Store: <https://apps.yunohost.org/app/svgedit>
 * Report a bug: <https://github.com/YunoHost-Apps/svgedit_ynh/issues>
