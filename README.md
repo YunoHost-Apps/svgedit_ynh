@@ -21,15 +21,11 @@ SVG-edit is a fast, web-based, javascript-driven SVG drawing editor that works i
 
 **Shipped version:** 2.8.1~ynh4
 
+**Demo:** https://svgedit.netlify.app/editor/index.html
+
 ## Screenshots
 
 ![Screenshot of SVG-edit](./doc/screenshots/screenshot.png)
-
-## Disclaimers / important information
-
-## Limitations
-
-There is no account management in SVG-edit, but the SSO can protect the access to the app to disallow user without YunoHost account.
 
 ## Documentation and resources
 

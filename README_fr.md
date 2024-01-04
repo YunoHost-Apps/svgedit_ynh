@@ -21,15 +21,11 @@ SVG-edit est un éditeur de dessin SVG rapide, basé sur le Web et piloté par J
 
 **Version incluse :** 2.8.1~ynh4
 
+**Démo :** https://svgedit.netlify.app/editor/index.html
+
 ## Captures d’écran
 
 ![Capture d’écran de SVG-edit](./doc/screenshots/screenshot.png)
-
-## Avertissements / informations importantes
-
-## Limitations
-
-Il n'y a pas de gestion de compte dans SVG-edit, mais le SSO peut protéger l'accès à l'application pour interdire les utilisateurs sans compte YunoHost.
 
 ## Documentations et ressources
 
