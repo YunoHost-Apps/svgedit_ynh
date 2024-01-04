@@ -1,0 +1,56 @@
+#:schema https://raw.githubusercontent.com/YunoHost/apps/master/schemas/manifest.v2.schema.json
+
+packaging_format = 2
+
+id = "svgedit"
+name = "SVG-edit"
+description.en = "Web-based SVG drawing editor working on any modern browser."
+description.fr = "Édition de SVG en ligne fonctionnent avec tout navigateur moderne."
+
+version = "2.8.1~ynh4"
+
+maintainers = ["ljf"]
+
+[upstream]
+license = "MIT"
+code = "https://github.com/SVG-Edit/svgedit"
+website = "https://github.com/SVG-Edit/svgedit"
+demo = "https://svgedit.netlify.app/editor/index.html"
+
+[integration]
+yunohost = ">= 4.3.0"
+architectures = "all"
+multi_instance = true
+ldap = "not_relevant"
+sso = "not_relevant"
+disk = "50M" # FIXME: replace with an **estimate** minimum disk requirement. e.g. 20M, 400M, 1G, ...
+ram.build = "50M" # FIXME: replace with an **estimate** minimum ram requirement. e.g. 50M, 400M, 1G, ...
+ram.runtime = "50M" # FIXME: replace with an **estimate** minimum ram requirement. e.g. 50M, 400M, 1G, ...
+
+[install]
+    [install.domain]
+    # this is a generic question - ask strings are automatically handled by Yunohost's core
+    type = "domain"
+
+    [install.path]
+    # this is a generic question - ask strings are automatically handled by Yunohost's core
+    type = "path"
+    default = "/svgedit"
+
+    [install.init_main_permission]
+    help.en = "If enabled, SVG-edit will be accessible by people who do not have an account. This can be changed later via the webadmin."
+    help.fr = "Si cette case est cochée, SVG-edit sera accessible aux personnes n’ayant pas de compte. Vous pourrez changer ceci plus tard via la webadmin."
+    type = "group"
+    default = "visitors"
+
+[resources]
+    [resources.sources.main]
+    url = "https://github.com/SVG-Edit/svgedit/releases/download/svg-edit-2.8.1/svg-edit-2.8.1.zip"
+    sha256 = "416799c4fcb3dcbe7fa5c4ac6409a2891afc4fa759b654bcb5e6df55e259bfe1"
+
+    [resources.system_user]
+
+    [resources.install_dir]
+
+    [resources.permissions]
+    main.url = "/"
