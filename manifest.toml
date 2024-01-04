@@ -1,0 +1,56 @@
+#:schema https://raw.githubusercontent.com/YunoHost/apps/master/schemas/manifest.v2.schema.json
+
+packaging_format = 2
+
+id = "svgedit"
+name = "SVG-edit"
+description.en = "Web-based SVG drawing editor working on any modern browser"
+description.fr = "Édition de SVG en ligne fonctionnent avec tout navigateur moderne"
+
+version = "2.8.1~ynh4"
+
+maintainers = ["ljf"]
+
+[upstream]
+license = "MIT"
+demo = "https://svgedit.netlify.app/editor/index.html"
+code = "https://github.com/SVG-Edit/svgedit"
+
+[integration]
+yunohost = ">= 11.2"
+architectures = "all"
+multi_instance = true
+
+ldap = false
+
+sso = false
+
+disk = "50M"
+ram.build = "50M"
+ram.runtime = "50M"
+
+[install]
+    [install.domain]
+    type = "domain"
+
+    [install.path]
+    type = "path"
+    default = "/svgedit"
+
+    [install.init_main_permission]
+    help.en = "If enabled, SVG-edit will be accessible by people who do not have an account. This can be changed later via the webadmin."
+    help.fr = "Si cette case est cochée, SVG-edit sera accessible aux personnes n’ayant pas de compte. Vous pourrez changer ceci plus tard via la webadmin."
+    type = "group"
+    default = "visitors"
+
+[resources]
+    [resources.sources.main]
+    url = "https://github.com/SVG-Edit/svgedit/releases/download/svg-edit-2.8.1/svg-edit-2.8.1.zip"
+    sha256 = "416799c4fcb3dcbe7fa5c4ac6409a2891afc4fa759b654bcb5e6df55e259bfe1"
+
+    [resources.system_user]
+
+    [resources.install_dir]
+
+    [resources.permissions]
+    main.url = "/"
