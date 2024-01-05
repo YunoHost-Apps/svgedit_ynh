@@ -27,23 +27,28 @@ then
 	ynh_script_progression --message="Upgrading source files..." --weight=1
 
 	# Download, check integrity, uncompress and patch the source from app.src
-	ynh_setup_source --dest_dir="$install_dir"
+	ynh_setup_source --dest_dir="$install_dir/source"
 fi
 
 chmod -R o-rwx "$install_dir"
 chown -R "$app:www-data" "$install_dir"
 
 #=================================================
-# SPECIFIC UPGRADE
+# BUILD WITH NPM
 #=================================================
-# UPDATE A CONFIG FILE
-#=================================================
-ynh_script_progression --message="Updating a configuration file..."
+ynh_script_progression --message="Building $app..." --weight=1
 
-ynh_add_config --template="config-sample.js" --destination="$install_dir/config.js"
+pushd "$install_dir/source"
+    ynh_use_nodejs
+    ynh_exec_warn_less ynh_exec_as "$app" env "$ynh_node_load_PATH" npm i
+    ynh_exec_warn_less ynh_exec_as "$app" env "$ynh_node_load_PATH" npm run build
+    ynh_secure_remove --file="node_modules"
+popd
 
-chmod 400 "$install_dir/config.js"
-chown "$app:$app" "$install_dir/config.js"
+mv "$install_dir/source/dist/editor" "$install_dir/www"
+
+chmod -R o-rwx "$install_dir"
+chown -R "$app:www-data" "$install_dir"
 
 #=================================================
 # END OF SCRIPT

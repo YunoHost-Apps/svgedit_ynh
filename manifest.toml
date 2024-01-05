@@ -45,8 +45,9 @@ ram.runtime = "50M"
 
 [resources]
     [resources.sources.main]
-    url = "https://github.com/SVG-Edit/svgedit/releases/download/svg-edit-2.8.1/svg-edit-2.8.1.zip"
-    sha256 = "416799c4fcb3dcbe7fa5c4ac6409a2891afc4fa759b654bcb5e6df55e259bfe1"
+    url = "https://github.com/SVG-Edit/svgedit/archive/refs/tags/v.7.3.3.tar.gz"
+    sha256 = "c543111cbdc6b72781e957941fa0382f1026d0ada81a31177a5688a9104766d7"
+    autoupdate.strategy = "latest_github_release"
 
     [resources.system_user]
 
