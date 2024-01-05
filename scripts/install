@@ -36,8 +36,10 @@ pushd "$install_dir/source"
     ynh_use_nodejs
     ynh_exec_warn_less ynh_exec_as "$app" env "$ynh_node_load_PATH" npm i
     ynh_exec_warn_less ynh_exec_as "$app" env "$ynh_node_load_PATH" npm run build
-    ynh_secure_remove --file="node_modules"
 popd
+ynh_secure_remove --file="$install_dir/source/node_modules"
+ynh_secure_remove --file="$install_dir/.cache"
+ynh_secure_remove --file="$install_dir/.npm"
 
 mv "$install_dir/source/dist/editor" "$install_dir/www"
 
