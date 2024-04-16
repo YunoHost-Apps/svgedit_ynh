@@ -9,7 +9,7 @@ It shall NOT be edited by hand.
 
 [![Install SVG-edit with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=svgedit)
 
-*[Read this README is other languages.](./ALL_README.md)*
+*[Read this README in other languages.](./ALL_README.md)*
 
 > *This package allows you to install SVG-edit quickly and simply on a YunoHost server.*  
 > *If you don't have YunoHost, please consult [the guide](https://yunohost.org/install) to learn how to install it.*
@@ -19,7 +19,7 @@ It shall NOT be edited by hand.
 SVG-edit is a fast, web-based, javascript-driven SVG drawing editor that works in any modern browser.
 
 
-**Shipped version:** 2.8.1~ynh4
+**Shipped version:** 2.8.1~ynh5
 
 **Demo:** <https://svgedit.netlify.app/editor/index.html>
 

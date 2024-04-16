@@ -19,7 +19,7 @@ NON debe editarse manualmente.
 SVG-edit is a fast, web-based, javascript-driven SVG drawing editor that works in any modern browser.
 
 
-**Versión proporcionada:** 2.8.1~ynh4
+**Versión proporcionada:** 2.8.1~ynh5
 
 **Demo:** <https://svgedit.netlify.app/editor/index.html>
 
