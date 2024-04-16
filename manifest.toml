@@ -7,7 +7,7 @@ name = "SVG-edit"
 description.en = "Web-based SVG drawing editor working on any modern browser"
 description.fr = "Édition de SVG en ligne fonctionnent avec tout navigateur moderne"
 
-version = "2.8.1~ynh4"
+version = "2.8.1~ynh5"
 
 maintainers = ["ljf"]
 
