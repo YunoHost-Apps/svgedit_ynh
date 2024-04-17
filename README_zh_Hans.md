@@ -19,7 +19,7 @@
 SVG-edit is a fast, web-based, javascript-driven SVG drawing editor that works in any modern browser.
 
 
-**分发版本：** 2.8.1~ynh5
+**分发版本：** 7.2.0~ynh1
 
 **演示：** <https://svgedit.netlify.app/editor/index.html>
 
