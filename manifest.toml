@@ -7,7 +7,7 @@ name = "SVG-edit"
 description.en = "Web-based SVG drawing editor working on any modern browser"
 description.fr = "Édition de SVG en ligne fonctionnent avec tout navigateur moderne"
 
-version = "7.2.0~ynh1"
+version = "7.3.3~ynh1"
 
 maintainers = ["ljf"]
 
@@ -45,8 +45,8 @@ ram.runtime = "50M"
 
 [resources]
     [resources.sources.main]
-    url = "https://github.com/SVG-Edit/svgedit/archive/refs/tags/v7.2.0.tar.gz"
-    sha256 = "238ca1507a3f7f33134158fdbc5d7b7ba2adbdedc9189749648d787ea737de7d"
+    url = "https://github.com/SVG-Edit/svgedit/archive/refs/tags/v.7.3.3.tar.gz"
+    sha256 = "c543111cbdc6b72781e957941fa0382f1026d0ada81a31177a5688a9104766d7"
     autoupdate.strategy = "latest_github_release"
 
     [resources.system_user]
