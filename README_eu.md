@@ -5,7 +5,7 @@ EZ editatu eskuz.
 
 # SVG-edit YunoHost-erako
 
-[![Integrazio maila](https://dash.yunohost.org/integration/svgedit.svg)](https://dash.yunohost.org/appci/app/svgedit) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/svgedit.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/svgedit.maintain.svg)
+[![Integrazio maila](https://dash.yunohost.org/integration/svgedit.svg)](https://ci-apps.yunohost.org/ci/apps/svgedit/) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/svgedit.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/svgedit.maintain.svg)
 
 [![Instalatu SVG-edit YunoHost-ekin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=svgedit)
 
@@ -19,7 +19,7 @@ EZ editatu eskuz.
 SVG-edit is a fast, web-based, javascript-driven SVG drawing editor that works in any modern browser.
 
 
-**Paketatutako bertsioa:** 7.2.0~ynh1
+**Paketatutako bertsioa:** 7.3.3~ynh1
 
 **Demoa:** <https://svgedit.netlify.app/editor/index.html>
 
