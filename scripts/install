@@ -1,61 +1,47 @@
 #!/bin/bash
 
-#=================================================
-# GENERIC START
-#=================================================
-# IMPORT GENERIC HELPERS
-#=================================================
-
 source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
 # INSTALL DEPENDENCIES
 #=================================================
-ynh_script_progression --message="Installing dependencies..." --weight=1
+ynh_script_progression "Installing dependencies..."
 
-ynh_exec_warn_less ynh_install_nodejs --nodejs_version=$nodejs_version
+ynh_nodejs_install
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
-ynh_script_progression --message="Setting up source files..." --weight=6
+ynh_script_progression "Setting up source files..."
 
-# Download, check integrity, uncompress and patch the source from app.src
 ynh_setup_source --dest_dir="$install_dir/source"
-
-chmod -R o-rwx "$install_dir"
-chown -R "$app:www-data" "$install_dir"
 
 #=================================================
 # BUILD WITH NPM
 #=================================================
-ynh_script_progression --message="Building $app..." --weight=1
+ynh_script_progression "Building $app..."
 
 pushd "$install_dir/source"
-    ynh_use_nodejs
-    ynh_exec_warn_less ynh_exec_as "$app" env "$ynh_node_load_PATH" npm i
-    ynh_exec_warn_less ynh_exec_as "$app" env "$ynh_node_load_PATH" npm run build
+    ynh_hide_warnings npm install
+    ynh_hide_warnings npm run build
 popd
-ynh_secure_remove --file="$install_dir/source/node_modules"
-ynh_secure_remove --file="$install_dir/.cache"
-ynh_secure_remove --file="$install_dir/.npm"
+
+ynh_safe_rm "$install_dir/source/node_modules"
+ynh_safe_rm "$install_dir/.cache"
+ynh_safe_rm "$install_dir/.npm"
 
 mv "$install_dir/source/dist/editor" "$install_dir/www"
-
-chmod -R o-rwx "$install_dir"
-chown -R "$app:www-data" "$install_dir"
 
 #=================================================
 # SYSTEM CONFIGURATION
 #=================================================
-ynh_script_progression --message="Adding system configurations related to $app..." --weight=1
+ynh_script_progression "Adding system configurations related to $app..."
 
-# Create a dedicated NGINX config
-ynh_add_nginx_config
+ynh_config_add_nginx
 
 #=================================================
 # END OF SCRIPT
 #=================================================
 
-ynh_script_progression --message="Installation of $app completed" --last
+ynh_script_progression "Installation of $app completed"
