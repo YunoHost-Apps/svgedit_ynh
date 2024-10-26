@@ -10,6 +10,8 @@ ynh_script_progression "Removing NGINX web server configuration..."
 
 ynh_config_remove_nginx
 
+ynh_nodejs_remove
+
 #=================================================
 # END OF SCRIPT
 #=================================================
