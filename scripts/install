@@ -23,9 +23,10 @@ ynh_setup_source --dest_dir="$install_dir/source"
 ynh_script_progression "Building $app..."
 
 pushd "$install_dir/source"
-    ynh_hide_warnings npm i
+    ynh_hide_warnings npm install
     ynh_hide_warnings npm run build
 popd
+
 ynh_safe_rm "$install_dir/source/node_modules"
 ynh_safe_rm "$install_dir/.cache"
 ynh_safe_rm "$install_dir/.npm"
