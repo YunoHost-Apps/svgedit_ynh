@@ -5,7 +5,7 @@ No se debe editar a mano.
 
 # SVG-edit para Yunohost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/svgedit.svg)](https://dash.yunohost.org/appci/app/svgedit) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/svgedit.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/svgedit.maintain.svg)
+[![Nivel de integración](https://dash.yunohost.org/integration/svgedit.svg)](https://ci-apps.yunohost.org/ci/apps/svgedit/) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/svgedit.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/svgedit.maintain.svg)
 
 [![Instalar SVG-edit con Yunhost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=svgedit)
 
@@ -19,7 +19,7 @@ No se debe editar a mano.
 SVG-edit is a fast, web-based, javascript-driven SVG drawing editor that works in any modern browser.
 
 
-**Versión actual:** 7.2.0~ynh1
+**Versión actual:** 7.3.3~ynh1
 
 **Demo:** <https://svgedit.netlify.app/editor/index.html>
 
@@ -35,7 +35,7 @@ SVG-edit is a fast, web-based, javascript-driven SVG drawing editor that works i
 
 ## Información para desarrolladores
 
-Por favor enviar sus correcciones a la [`branch testing`](https://github.com/YunoHost-Apps/svgedit_ynh/tree/testing
+Por favor enviar sus correcciones a la [rama `testing`](https://github.com/YunoHost-Apps/svgedit_ynh/tree/testing).
 
 Para probar la rama `testing`, sigue asÍ:
 

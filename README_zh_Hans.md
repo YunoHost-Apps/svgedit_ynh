@@ -5,7 +5,7 @@
 
 # YunoHost 上的 SVG-edit
 
-[![集成程度](https://dash.yunohost.org/integration/svgedit.svg)](https://dash.yunohost.org/appci/app/svgedit) ![工作状态](https://ci-apps.yunohost.org/ci/badges/svgedit.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/svgedit.maintain.svg)
+[![集成程度](https://dash.yunohost.org/integration/svgedit.svg)](https://ci-apps.yunohost.org/ci/apps/svgedit/) ![工作状态](https://ci-apps.yunohost.org/ci/badges/svgedit.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/svgedit.maintain.svg)
 
 [![使用 YunoHost 安装 SVG-edit](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=svgedit)
 
@@ -19,7 +19,7 @@
 SVG-edit is a fast, web-based, javascript-driven SVG drawing editor that works in any modern browser.
 
 
-**分发版本：** 7.2.0~ynh1
+**分发版本：** 7.3.3~ynh1
 
 **演示：** <https://svgedit.netlify.app/editor/index.html>
 
