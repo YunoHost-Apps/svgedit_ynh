@@ -28,8 +28,6 @@ pushd "$install_dir/source"
 popd
 
 ynh_safe_rm "$install_dir/source/node_modules"
-ynh_safe_rm "$install_dir/.cache"
-ynh_safe_rm "$install_dir/.npm"
 
 mv "$install_dir/source/dist/editor" "$install_dir/www"
 
