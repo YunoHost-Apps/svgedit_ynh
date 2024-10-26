@@ -9,7 +9,7 @@ description.fr = "Édition de SVG en ligne fonctionnent avec tout navigateur mod
 
 version = "7.3.3~ynh1"
 
-maintainers = ["ljf"]
+maintainers = []
 
 [upstream]
 license = "MIT"
@@ -23,7 +23,6 @@ architectures = "all"
 multi_instance = true
 
 ldap = false
-
 sso = false
 
 disk = "50M"

@@ -27,9 +27,9 @@ pushd "$install_dir/source"
     ynh_hide_warnings npm run build
 popd
 
-ynh_safe_rm "$install_dir/source/node_modules"
+mv "$install_dir/source/dist/editor" "$install_dir"
 
-mv "$install_dir/source/dist/editor" "$install_dir/www"
+ynh_safe_rm "$install_dir/source"
 
 #=================================================
 # END OF SCRIPT
