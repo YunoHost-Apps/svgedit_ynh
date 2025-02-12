@@ -5,7 +5,9 @@ EZ editatu eskuz.
 
 # SVG-edit YunoHost-erako
 
-[![Integrazio maila](https://dash.yunohost.org/integration/svgedit.svg)](https://ci-apps.yunohost.org/ci/apps/svgedit/) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/svgedit.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/svgedit.maintain.svg)
+[![Integrazio maila](https://apps.yunohost.org/badge/integration/svgedit)](https://ci-apps.yunohost.org/ci/apps/svgedit/)
+![Funtzionamendu egoera](https://apps.yunohost.org/badge/state/svgedit)
+![Mantentze egoera](https://apps.yunohost.org/badge/maintained/svgedit)
 
 [![Instalatu SVG-edit YunoHost-ekin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=svgedit)
 
