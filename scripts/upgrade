@@ -1,14 +1,16 @@
 #!/bin/bash
 
+#=================================================
+# IMPORT GENERIC HELPERS
+#=================================================
+
 source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# INSTALL DEPENDENCIES
+# ENSURE DOWNWARD COMPATIBILITY
 #=================================================
-ynh_script_progression "Installing dependencies..."
-
-ynh_nodejs_install
+ynh_script_progression "Ensuring downward compatibility..."
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
@@ -18,18 +20,34 @@ ynh_script_progression "Upgrading source files..."
 ynh_setup_source --dest_dir="$install_dir/source"
 
 #=================================================
+# INSTALL DEPENDENCIES
+#=================================================
+ynh_script_progression "Installing dependencies..."
+
+ynh_nodejs_install
+
+#=================================================
 # BUILD WITH NPM
 #=================================================
 ynh_script_progression "Building $app..."
 
 pushd "$install_dir/source"
-    ynh_hide_warnings npm install
-    ynh_hide_warnings npm run build
+	ynh_hide_warnings ynh_exec_as_app npm install
+	ynh_hide_warnings ynh_exec_as_app npm run build
 popd
 
-mv "$install_dir/source/dist/editor" "$install_dir"
+ynh_exec_as_app mv "$install_dir/source/dist/editor" "$install_dir/www"
 
 ynh_safe_rm "$install_dir/source"
+ynh_safe_rm "$install_dir/.cache"
+ynh_safe_rm "$install_dir/.npm"
+
+#=================================================
+# REAPPLY SYSTEM CONFIGURATIONS
+#=================================================
+ynh_script_progression "Upgrading system configurations related to $app..."
+
+ynh_config_add_nginx
 
 #=================================================
 # END OF SCRIPT
