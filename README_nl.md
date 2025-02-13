@@ -5,7 +5,9 @@ Hij mag NIET handmatig aangepast worden.
 
 # SVG-edit voor Yunohost
 
-[![Integratieniveau](https://dash.yunohost.org/integration/svgedit.svg)](https://ci-apps.yunohost.org/ci/apps/svgedit/) ![Mate van functioneren](https://ci-apps.yunohost.org/ci/badges/svgedit.status.svg) ![Onderhoudsstatus](https://ci-apps.yunohost.org/ci/badges/svgedit.maintain.svg)
+[![Integratieniveau](https://apps.yunohost.org/badge/integration/svgedit)](https://ci-apps.yunohost.org/ci/apps/svgedit/)
+![Mate van functioneren](https://apps.yunohost.org/badge/state/svgedit)
+![Onderhoudsstatus](https://apps.yunohost.org/badge/maintained/svgedit)
 
 [![SVG-edit met Yunohost installeren](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=svgedit)
 

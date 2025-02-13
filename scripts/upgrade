@@ -1,7 +1,26 @@
 #!/bin/bash
 
+#=================================================
+# IMPORT GENERIC HELPERS
+#=================================================
+
 source _common.sh
 source /usr/share/yunohost/helpers
+
+#=================================================
+# ENSURE DOWNWARD COMPATIBILITY
+#=================================================
+ynh_script_progression "Ensuring downward compatibility..."
+
+#=================================================
+# DOWNLOAD, CHECK AND UNPACK SOURCE
+#=================================================
+ynh_script_progression "Upgrading source files..."
+
+# Download, check integrity, uncompress and patch the source from manifest.toml
+ynh_setup_source --dest_dir="$install_dir/source"
+
+chown -R "$app:www-data" "$install_dir"
 
 #=================================================
 # INSTALL DEPENDENCIES
@@ -11,25 +30,27 @@ ynh_script_progression "Installing dependencies..."
 ynh_nodejs_install
 
 #=================================================
-# DOWNLOAD, CHECK AND UNPACK SOURCE
-#=================================================
-ynh_script_progression "Upgrading source files..."
-
-ynh_setup_source --dest_dir="$install_dir/source"
-
-#=================================================
 # BUILD WITH NPM
 #=================================================
 ynh_script_progression "Building $app..."
 
 pushd "$install_dir/source"
-    ynh_hide_warnings npm install
-    ynh_hide_warnings npm run build
+	ynh_hide_warnings ynh_exec_as_app npm install
+	ynh_hide_warnings ynh_exec_as_app npm run build
 popd
 
-mv "$install_dir/source/dist/editor" "$install_dir"
+ynh_exec_as_app mv "$install_dir/source/dist/editor" "$install_dir/www"
 
 ynh_safe_rm "$install_dir/source"
+ynh_safe_rm "$install_dir/.cache"
+ynh_safe_rm "$install_dir/.npm"
+
+#=================================================
+# REAPPLY SYSTEM CONFIGURATIONS
+#=================================================
+ynh_script_progression "Upgrading system configurations related to $app..."
+
+ynh_config_add_nginx
 
 #=================================================
 # END OF SCRIPT

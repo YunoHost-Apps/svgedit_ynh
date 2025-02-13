@@ -5,7 +5,9 @@
 
 # SVG-edit для YunoHost
 
-[![Уровень интеграции](https://dash.yunohost.org/integration/svgedit.svg)](https://ci-apps.yunohost.org/ci/apps/svgedit/) ![Состояние работы](https://ci-apps.yunohost.org/ci/badges/svgedit.status.svg) ![Состояние сопровождения](https://ci-apps.yunohost.org/ci/badges/svgedit.maintain.svg)
+[![Уровень интеграции](https://apps.yunohost.org/badge/integration/svgedit)](https://ci-apps.yunohost.org/ci/apps/svgedit/)
+![Состояние работы](https://apps.yunohost.org/badge/state/svgedit)
+![Состояние сопровождения](https://apps.yunohost.org/badge/maintained/svgedit)
 
 [![Установите SVG-edit с YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=svgedit)
 
