@@ -1,59 +1,59 @@
 #!/bin/bash
 
 #=================================================
-# GENERIC START
-#=================================================
 # IMPORT GENERIC HELPERS
 #=================================================
 
 source _common.sh
 source /usr/share/yunohost/helpers
 
-upgrade_type=$(ynh_check_app_version_changed)
-
-#=================================================
-# STANDARD UPGRADE STEPS
 #=================================================
 # ENSURE DOWNWARD COMPATIBILITY
 #=================================================
-ynh_script_progression --message="Ensuring downward compatibility..." --weight=1
+ynh_script_progression "Ensuring downward compatibility..."
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
+ynh_script_progression "Upgrading source files..."
 
-if [ "$upgrade_type" == "UPGRADE_APP" ]
-then
-	ynh_script_progression --message="Upgrading source files..." --weight=1
+# Download, check integrity, uncompress and patch the source from manifest.toml
+ynh_setup_source --dest_dir="$install_dir/source"
 
-	# Download, check integrity, uncompress and patch the source from app.src
-	ynh_setup_source --dest_dir="$install_dir/source"
-fi
-
-chmod -R o-rwx "$install_dir"
 chown -R "$app:www-data" "$install_dir"
+
+#=================================================
+# INSTALL DEPENDENCIES
+#=================================================
+ynh_script_progression "Installing dependencies..."
+
+ynh_nodejs_install
 
 #=================================================
 # BUILD WITH NPM
 #=================================================
-ynh_script_progression --message="Building $app..." --weight=1
+ynh_script_progression "Building $app..."
 
 pushd "$install_dir/source"
-    ynh_use_nodejs
-    ynh_exec_warn_less ynh_exec_as "$app" env "$ynh_node_load_PATH" npm i
-    ynh_exec_warn_less ynh_exec_as "$app" env "$ynh_node_load_PATH" npm run build
+	ynh_hide_warnings ynh_exec_as_app npm install
+	ynh_hide_warnings ynh_exec_as_app npm run build
 popd
-ynh_secure_remove --file="$install_dir/source/node_modules"
-ynh_secure_remove --file="$install_dir/.cache"
-ynh_secure_remove --file="$install_dir/.npm"
 
-mv "$install_dir/source/dist/editor" "$install_dir/www"
+ynh_exec_as_app mv "$install_dir/source/dist/editor" "$install_dir/www"
 
-chmod -R o-rwx "$install_dir"
-chown -R "$app:www-data" "$install_dir"
+ynh_safe_rm "$install_dir/source"
+ynh_safe_rm "$install_dir/.cache"
+ynh_safe_rm "$install_dir/.npm"
+
+#=================================================
+# REAPPLY SYSTEM CONFIGURATIONS
+#=================================================
+ynh_script_progression "Upgrading system configurations related to $app..."
+
+ynh_config_add_nginx
 
 #=================================================
 # END OF SCRIPT
 #=================================================
 
-ynh_script_progression --message="Upgrade of $app completed" --last
+ynh_script_progression "Upgrade of $app completed"

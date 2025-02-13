@@ -5,7 +5,9 @@ Ini TIDAK boleh diedit dengan tangan.
 
 # SVG-edit untuk YunoHost
 
-[![Tingkat integrasi](https://dash.yunohost.org/integration/svgedit.svg)](https://ci-apps.yunohost.org/ci/apps/svgedit/) ![Status kerja](https://ci-apps.yunohost.org/ci/badges/svgedit.status.svg) ![Status pemeliharaan](https://ci-apps.yunohost.org/ci/badges/svgedit.maintain.svg)
+[![Tingkat integrasi](https://apps.yunohost.org/badge/integration/svgedit)](https://ci-apps.yunohost.org/ci/apps/svgedit/)
+![Status kerja](https://apps.yunohost.org/badge/state/svgedit)
+![Status pemeliharaan](https://apps.yunohost.org/badge/maintained/svgedit)
 
 [![Pasang SVG-edit dengan YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=svgedit)
 

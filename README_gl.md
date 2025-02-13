@@ -5,7 +5,9 @@ NON debe editarse manualmente.
 
 # SVG-edit para YunoHost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/svgedit.svg)](https://ci-apps.yunohost.org/ci/apps/svgedit/) ![Estado de funcionamento](https://ci-apps.yunohost.org/ci/badges/svgedit.status.svg) ![Estado de mantemento](https://ci-apps.yunohost.org/ci/badges/svgedit.maintain.svg)
+[![Nivel de integración](https://apps.yunohost.org/badge/integration/svgedit)](https://ci-apps.yunohost.org/ci/apps/svgedit/)
+![Estado de funcionamento](https://apps.yunohost.org/badge/state/svgedit)
+![Estado de mantemento](https://apps.yunohost.org/badge/maintained/svgedit)
 
 [![Instalar SVG-edit con YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=svgedit)
 
