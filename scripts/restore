@@ -4,8 +4,6 @@
 # IMPORT GENERIC HELPERS
 #=================================================
 
-
-
 source /usr/share/yunohost/helpers
 
 #=================================================
@@ -21,13 +19,6 @@ ynh_restore "$install_dir"
 ynh_script_progression "Restoring system configurations related to $app..."
 
 ynh_restore "/etc/nginx/conf.d/$domain.d/$app.conf"
-
-#=================================================
-# INSTALL DEPENDENCIES
-#=================================================
-ynh_script_progression "Installing dependencies..."
-
-#REMOVEME? ynh_nodejs_install
 
 #=================================================
 # RELOAD NGINX AND PHP-FPM OR THE APP SERVICE
